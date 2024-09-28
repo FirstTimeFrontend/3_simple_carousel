@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carousel</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>HEADER</header>
+    <main>
+      <div class="carousel-div">
+        <div class="carousel-filter"></div>
+        <img class="image imgBg" src="" alt="" />
+        <i class="left-icon fa-solid fa-circle-left"></i>
+        <i class="right-icon fa-solid fa-circle-right"></i>
+        <div class="display-img-div">
+            <img class="display-image" src="" alt="" />
+        </div>
+        <h1 class="title">Hello</h1>
+        <div class="image-list">
+          <img class="img1" src="" alt="" />
+          <img class="img2" src="" alt="" />
+          <img class="img3 active" src="" alt="" />
+          <img class="img4" src="" alt="" />
+          <img class="img5" src="" alt="" />
+        </div>
+      </div>
+    </main>
+
+    <script>
+      let images = [
+        {
+          id: 1,
+          title: "Ah, the sweet smell of air I can’t afford to breathe",
+          src: "https://hips.hearstapps.com/hmg-prod/images/tdw-14349-r-66a4002990b3b.jpg?crop=1xw:0.84375xh;center,top&resize=1200:*",
+        },
+        {
+          id: 2,
+          title: "Happiness is not by chance, but by choice",
+          src: "https://static1.srcdn.com/wordpress/wp-content/uploads/2023/06/michael-keaton-s-batman-suits-in-the-flash.jpg",
+        },
+        {
+          id: 3,
+          title: "The best way to predict the future is to create it",
+          src: "https://i0.wp.com/novastreamnetwork.com/wp-content/uploads/2023/06/the-flash-movie-screenx-poster-5k-6m-scaled.jpg?fit=2560%2C1440&ssl=1",
+        },
+        {
+          id: 4,
+          title: "Act as if what you do makes a difference. It does.",
+          src: "https://i.blogs.es/fc7807/wonder-woman0/1366_2000.jpg",
+        },
+        {
+          id: 5,
+          title: "The only impossible journey is the one you never begin",
+          src: "https://wallpapers.com/images/hd/captain-america-endgame-4k-nelf9tagdwmxbpcd.jpg",
+        },
+        {
+          id: 6,
+          title: "Don’t worry about the world coming to an end today. It is already tomorrow in Australia",
+          src: "https://www.looper.com/img/gallery/how-we-could-see-thanoss-return-to-the-marvel-cinematic-universe/intro-1612017617.jpg",
+        },
+        {
+          id: 7,
+          title: "I'm not lazy, I'm just very relaxed",
+          src: "https://w0.peakpx.com/wallpaper/452/175/HD-wallpaper-movie-doctor-strange-in-the-multiverse-of-madness-benedict-cumberbatch-doctor-strange.jpg",
+        },
+      ];
+
+      const leftIcon = document.querySelector(".left-icon");
+      const rightIcon = document.querySelector(".right-icon");
+      const imgBg = document.querySelector(".image");
+      const title = document.querySelector(".title");
+      const displayImage = document.querySelector(".display-image");
+      const img1 = document.querySelector(".img1");
+      const img2 = document.querySelector(".img2");
+      const img3 = document.querySelector(".img3");
+      const img4 = document.querySelector(".img4");
+      const img5 = document.querySelector(".img5");
+      let currIndex = 0;
+      function nextIndex(increament = 1) {
+        return (currIndex + increament + images.length) % images.length;
+      }
+      function prevIndex(decrement = 1) {
+        return (currIndex - decrement + images.length) % images.length;
+      }
+
+      //   background
+      imgBg.src = images[currIndex].src;
+      //   display-image
+      displayImage.src = images[currIndex].src;
+      //  title
+      title.textContent = images[currIndex].title;
+      //   img-list
+      img1.src = images[prevIndex(2)].src;
+      img2.src = images[prevIndex()].src;
+      img3.src = images[currIndex].src;
+      img4.src = images[nextIndex()].src;
+      img5.src = images[nextIndex(2)].src;
+      rightIcon.addEventListener("click", () => {
+        currIndex = nextIndex();
+        displayImage.src = images[currIndex].src;
+        imgBg.src = images[currIndex].src;
+        title.textContent = images[currIndex].title;
+        img1.src = images[prevIndex(2)].src;
+        img2.src = images[prevIndex()].src;
+        img3.src = images[currIndex].src;
+        img4.src = images[nextIndex()].src;
+        img5.src = images[nextIndex(2)].src;
+      });
+
+      leftIcon.addEventListener("click", () => {
+        currIndex = prevIndex();
+        displayImage.src = images[currIndex].src;
+        imgBg.src = images[currIndex].src;
+        title.textContent = images[currIndex].title;
+        img1.src = images[prevIndex(2)].src;
+        img2.src = images[prevIndex()].src;
+        img3.src = images[currIndex].src;
+        img4.src = images[nextIndex()].src;
+        img5.src = images[nextIndex(2)].src;
+      });
+      img1.addEventListener("click", () => {
+        currIndex = prevIndex(2);
+        displayImage.src = images[currIndex].src;
+        imgBg.src = images[currIndex].src;
+        title.textContent = images[currIndex].title;
+        img1.src = images[prevIndex(2)].src;
+        img2.src = images[prevIndex()].src;
+        img3.src = images[currIndex].src;
+        img4.src = images[nextIndex()].src;
+        img5.src = images[nextIndex(2)].src;
+      });
+      img2.addEventListener("click", () => {
+        currIndex = prevIndex();
+        displayImage.src = images[currIndex].src;
+        imgBg.src = images[currIndex].src;
+        title.textContent = images[currIndex].title;
+        img1.src = images[prevIndex(2)].src;
+        img2.src = images[prevIndex()].src;
+        img3.src = images[currIndex].src;
+        img4.src = images[nextIndex()].src;
+        img5.src = images[nextIndex(2)].src;
+      });
+      
+      img4.addEventListener("click", () => {
+        currIndex = nextIndex();
+        displayImage.src = images[currIndex].src;
+        imgBg.src = images[currIndex].src;
+        title.textContent = images[currIndex].title;
+        img1.src = images[prevIndex(2)].src;
+        img2.src = images[prevIndex()].src;
+        img3.src = images[currIndex].src;
+        img4.src = images[nextIndex()].src;
+        img5.src = images[nextIndex(2)].src;
+      });
+      img5.addEventListener("click", () => {
+        currIndex = nextIndex(2);
+        displayImage.src = images[currIndex].src;
+        imgBg.src = images[currIndex].src;
+        title.textContent = images[currIndex].title;
+        img1.src = images[prevIndex(2)].src;
+        img2.src = images[prevIndex()].src;
+        img3.src = images[currIndex].src;
+        img4.src = images[nextIndex()].src;
+        img5.src = images[nextIndex(2)].src;
+      });
+      
+    </script>
+  </body>
+</html>

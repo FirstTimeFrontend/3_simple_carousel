@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    color: white;
+}
+body{
+    background-color: black;
+    position: relative;
+}
+
+header{
+    background-color: rgb(41, 38, 38);
+    padding: 20px;
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main .carousel-div{
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(61, 66, 66);
+    position: relative;
+    width: 100%;
+    height: 40vw;
+}
+
+main .carousel-div .carousel-filter{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+}
+
+main .carousel-div .title{
+    position: absolute;
+    text-align: center;
+    width: 30%;
+    left: 10%;
+    font-size: 2.5vw;
+    z-index: 1;
+}
+main .carousel-div img{
+    width: 100%;
+    height: 100%;
+}
+main .carousel-div .imgBg{
+    object-fit: cover;
+}
+main .carousel-div .display-img-div{
+    position: absolute;
+    right: 50px;
+    top: 2vw;
+    width: 50vw;
+    height: 30vw;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+main .carousel-div .display-image{
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    object-fit: cover;
+}
+
+main .carousel-div i{
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1;
+    object-fit: cover;
+}
+main .carousel-div i:active{
+    color: aqua;
+}
+main .carousel-div .left-icon{
+    position: absolute;
+    left: 10px;
+}
+main .carousel-div .right-icon{
+    position: absolute;
+    right: 10px;
+}
+
+main .carousel-div .image-list{
+    position: absolute;
+    display: flex;
+    bottom: 5px;
+    gap: 10px;
+}
+main .carousel-div .image-list img{
+    width: 100px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+main .carousel-div .image-list .active{
+    border: 2px solid white;
+}
+main .carousel-div .image-list .active:active{
+    box-shadow:0 0 5px 2px rgba(0, 111, 37, 0.566);
+}
+
+main .carousel-div .image-list img:not(.active):hover{
+    border: 2px solid rgb(13, 252, 92);
+}
+
